@@ -1,0 +1,9 @@
+services:
+  user-service:
+    build:
+      context: .
+      target: user-service
+    ports:
+      - 8080:8080
+  db:
+    image: mongo:latest

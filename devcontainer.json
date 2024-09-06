@@ -1,0 +1,7 @@
+{
+  "dockerComposeFile": [
+    "./user-service/compose.yaml",
+    "./photo-album-app/compose.yaml"
+  ],
+  "service": "photo-album-app"
+}
