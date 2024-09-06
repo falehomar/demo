@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+package "Spring boot Angular demo" {
+
+  [PhotoAlbumApp] <<UIAngularApplication>>
+  [UserService] <<SpringBootMicroService>>
+
+}
+
+database "MongoDB" {
+  folder "collections" {
+    [Users]
+  }
+}
+
+
+[PhotoAlbumApp] --> [UserService]
+[UserService] --> [Users]
+
+@enduml
