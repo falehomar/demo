@@ -15,7 +15,7 @@ export class PhotoUploadService {
     console.log(file);
     if (file) {
       let formParams = new FormData();
-      formParams.append('file', file)
+      formParams.append('items', file)
       return this.httpClient.post('http://localhost:8080/photo', formParams)
     } else {
       console.error("file must not be empty")

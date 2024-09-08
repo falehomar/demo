@@ -15,17 +15,20 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import javax.imageio.ImageIO;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Component
 @Slf4j
 public class ThumbnailGenerator {
 
     ReactiveGridFsOperations gridFsOperations;
-    private ReactiveMongoOperations mongoOperations;
+    private final ReactiveMongoOperations mongoOperations;
 
     public ThumbnailGenerator(ReactiveGridFsOperations gridFsOperations, ReactiveMongoOperations mongoOperations) {
         this.gridFsOperations = gridFsOperations;
@@ -35,7 +38,7 @@ public class ThumbnailGenerator {
     @KafkaListener(topics = {"photos"},groupId = "ThumbnailGenerator")
     public void generateThumbnail(Photo photo) {
       log.info("Thumbnail generation of {}",photo);
-        this.gridFsOperations.findFirst(Query.query(Criteria.where("_id").is(photo.getId())))
+        this.gridFsOperations.findFirst(Query.query(Criteria.where("_id").is(photo.getDataFile())))
                 .flatMap(this.gridFsOperations::getResource)
                 .flatMap(ReactiveGridFsResource::getInputStream)
                 .map(inputStream -> {
@@ -49,8 +52,16 @@ public class ThumbnailGenerator {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .map(bufferedImage -> {
+                    int width = bufferedImage.getWidth();
+                    int height = bufferedImage.getHeight();
+                    var aspectRatio = width /height;
+                    var tWidth = 75;
+                    var tHeight = tWidth/aspectRatio;
+                    AffineTransformOp op = new AffineTransformOp(AffineTransform.getScaleInstance((double) tWidth /width, (double) tHeight /height), AffineTransformOp.TYPE_BILINEAR);
+                    BufferedImage dst = new BufferedImage(tWidth, tHeight, BufferedImage.TYPE_INT_RGB);
+                    op.filter(bufferedImage, dst);
 
-                    return bufferedImage;
+                    return dst;
                 }).map(bufferedImage -> {
                     DefaultDataBuffer dataBuffer = new DefaultDataBufferFactory().wrap("".getBytes(StandardCharsets.UTF_8));
                     try (var outputStream = dataBuffer.asOutputStream()){
@@ -63,14 +74,16 @@ public class ThumbnailGenerator {
                 })
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .flatMap(dataBuffer -> this.gridFsOperations.store(Mono.just(dataBuffer), photo.getId()))
+                .flatMap(dataBuffer -> this.gridFsOperations.store(Mono.just(dataBuffer), photo.getId()+"_thumbnail.png"))
                 .flatMap(objectId -> {
-                    Photo thumbnail = Photo.builder().id(objectId).build();
-                    return this.mongoOperations.save(thumbnail).map(savedThumbnail->this.mongoOperations.findOne(Query.query(Criteria.where("_id").is(objectId)), Photo.class)
-                            .map(storedPhoto-> this.mongoOperations.save(storedPhoto.toBuilder().thumbnail(savedThumbnail).build())));
+                    Photo thumbnail = Photo.builder().dataFile(objectId).build();
+                    return this.mongoOperations.save(thumbnail).map(savedThumbnail->this.mongoOperations
+                            .findOne(Query.query(Criteria.where("_id").is(photo.getId())), Photo.class)
+                            .map(storedPhoto-> this.mongoOperations.save(storedPhoto.toBuilder().thumbnail(savedThumbnail.getId()).build())));
                 })
-                .subscribe()
-
+                .flatMap(Function.identity())
+                .flatMap(Function.identity())
+                .subscribe(result->log.info("Completed thumbnail generation of {}",result));
                 ;
     }
 }

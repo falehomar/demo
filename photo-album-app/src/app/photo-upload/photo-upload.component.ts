@@ -3,7 +3,7 @@ import {MatMiniFabButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {NgStyle} from "@angular/common";
 import {PhotoUploadService} from "../photo-upload.service";
-import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 
 @Component({
@@ -19,15 +19,27 @@ import {Router} from "@angular/router";
   styleUrl: './photo-upload.component.css'
 })
 export class PhotoUploadComponent {
-  file = new FormControl();
+  fileName: string | undefined;
 
   constructor(private photoUploadService: PhotoUploadService,private router: Router) {
   }
 
-  onFileSelected($event: Event) {
-    console.log("onFileSelected", this.file);
+  onFileSelected(event: Event) {
+    if (event.target){
+      let t = (<HTMLInputElement>event.target)
+      if (t.files && t.files[0]){
+        const file:File =t.files[0]
+        if (file){
+          this.fileName = file.name;
+          this.photoUploadService.uploadPhoto(file)
+            .subscribe((result)=>this.router.navigateByUrl("../"))
+        }
+      }
 
-    this.photoUploadService.uploadPhoto(this.file.getRawValue())
-      .subscribe((result)=>this.router.navigateByUrl("../"))
+    }
+
+
+
+
   }
 }

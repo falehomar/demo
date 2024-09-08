@@ -1,7 +1,8 @@
 {
   "dockerComposeFile": [
-    "./user-service/compose.yaml",
-    "./photo-album-app/compose.yaml"
+    "./photo-service/compose.yaml",
+    "./photo-album-app/compose.yaml",
+    "./thumbnail-generator/compose.yaml",
   ],
   "service": "photo-album-app"
 }
