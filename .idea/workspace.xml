@@ -4,56 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eeaf1b0f-39ca-459e-9b9b-be200f0dedb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/thumbnail-generator/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thumbnail-generator/compose.yaml" afterDir="false" />
+    <list default="true" id="eeaf1b0f-39ca-459e-9b9b-be200f0dedb7" name="Changes" comment="fixing file upload in ui and server">
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/classes/java/main/my/demo/common/ObjectIdSerializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/build/classes/java/main/my/demo/common/ObjectIdSerializer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/build/classes/java/main/my/demo/common/Photo$PhotoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/build/classes/java/main/my/demo/common/Photo$PhotoBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/build/classes/java/main/my/demo/common/Photo.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/build/classes/java/main/my/demo/common/Photo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/build/libs/common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/build/libs/common-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/DataFile$DataFileBuilder.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/DataFile.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/Dimention$DimentionBuilder.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/Dimention.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/Photo$PhotoBuilder.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/Photo.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/compileTransaction/stash-dir/Thumbnail.class.uniqueId1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/common/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/my/demo/common/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/my/demo/common/Photo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devcontainer.json" beforeDir="false" afterPath="$PROJECT_DIR$/devcontainer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/photo-icons/photo-icons.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/photo-icons/photo-icons.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/photo-icons/photo-icons.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/photo-icons/photo-icons.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/photo-icons/photo-icons.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/photo-icons/photo-icons.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/photo-upload.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/photo-upload.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/photo-upload/photo-upload.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/photo-upload/photo-upload.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/photo-upload/photo-upload.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/photo-upload/photo-upload.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail/thumbnail.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail/thumbnail.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail/thumbnail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail/thumbnail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail/thumbnail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/photo-album-app/src/app/thumbnail/thumbnail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/PhotoUploadApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/PhotoUploadApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/thumbnail-generator/src/main/java/my/demo/thumbnailgenerator/ThumbnailGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/thumbnail-generator/src/main/java/my/demo/thumbnailgenerator/ThumbnailGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/MessagingConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/MessagingConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/PhotoDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/PhotoDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/PhotoUploadApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/PhotoUploadApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/PhotoUploadResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/PhotoUploadResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/ReactiveApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/ReactiveApplicationConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/PhotoServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/my/demo/userservice/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/java/my/demo/photoservice/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/test/java/my/demo/userservice/UserServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/photo-service/src/test/java/my/demo/photoservice/PhotoServiceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -127,7 +113,7 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager" selected="npm.ng serve">
+  <component name="RunManager" selected="Spring Boot.ThumbnailGeneratorApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,11 +174,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725811720106</updated>
-      <workItem from="1725811721168" duration="12969000" />
+      <workItem from="1725811721168" duration="20722000" />
     </task>
+    <task id="LOCAL-00001" summary="fixing file upload in ui and server">
+      <option name="closed" value="true" />
+      <created>1725827404909</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725827404909</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="fixing file upload in ui and server" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing file upload in ui and server" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

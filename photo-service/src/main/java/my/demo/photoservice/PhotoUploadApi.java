@@ -55,7 +55,7 @@ public class PhotoUploadApi {
                 })));
     }
 
-    @GetMapping(path = "/photo/{id}/data", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @GetMapping(path = "/photo/{id}/data", produces = MediaType.IMAGE_PNG_VALUE)
     public Mono<ResponseEntity<Flux<DataBuffer>>> getPhotoData(@PathVariable("id") String id, ServerWebExchange exchange) {
         exchange.getResponse().getHeaders().add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=image.png");
 

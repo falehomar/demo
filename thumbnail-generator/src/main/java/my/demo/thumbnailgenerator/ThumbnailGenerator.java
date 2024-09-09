@@ -54,14 +54,12 @@ public class ThumbnailGenerator {
                 .map(bufferedImage -> {
                     int width = bufferedImage.getWidth();
                     int height = bufferedImage.getHeight();
-                    var aspectRatio = width /height;
-                    var tWidth = 75;
-                    var tHeight = tWidth/aspectRatio;
+                    var aspectRatio = (double)width /height;
+                    var tWidth = 250;
+                    var tHeight = (double)tWidth/aspectRatio;
                     AffineTransformOp op = new AffineTransformOp(AffineTransform.getScaleInstance((double) tWidth /width, (double) tHeight /height), AffineTransformOp.TYPE_BILINEAR);
-                    BufferedImage dst = new BufferedImage(tWidth, tHeight, BufferedImage.TYPE_INT_RGB);
-                    op.filter(bufferedImage, dst);
 
-                    return dst;
+                    return op.filter(bufferedImage, null);
                 }).map(bufferedImage -> {
                     DefaultDataBuffer dataBuffer = new DefaultDataBufferFactory().wrap("".getBytes(StandardCharsets.UTF_8));
                     try (var outputStream = dataBuffer.asOutputStream()){
