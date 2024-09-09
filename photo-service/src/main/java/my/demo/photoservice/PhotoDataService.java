@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.ReactiveGridFsOperations;
+import org.springframework.data.mongodb.gridfs.ReactiveGridFsResource;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,10 @@ import java.util.function.Function;
 
 @Service
 public class PhotoDataService {
-    private ReactiveMongoOperations mongoOperations;
-    private KafkaTemplate<String, Photo> kafkaTemplate;
+    private final ReactiveMongoOperations mongoOperations;
+    private final KafkaTemplate<String, Photo> kafkaTemplate;
+    private final ReactiveGridFsOperations gridFsOperations;
 
-    ReactiveGridFsOperations gridFsOperations;
     public PhotoDataService(ReactiveMongoOperations mongoOperations,
                             ReactiveGridFsOperations gridFsOperations,
                             KafkaTemplate<String, Photo> kafkaTemplate) {
@@ -32,14 +33,14 @@ public class PhotoDataService {
     public Mono<Photo> save(FilePart filePart) {
         return gridFsOperations.store(filePart.content(), filePart.filename())
                 .map(objectId -> Photo.builder().dataFile(objectId).build())
-                .flatMap(photo -> mongoOperations.save(photo))
+                .flatMap(mongoOperations::save)
                 .doOnNext(photo -> kafkaTemplate.send("photos",photo.getId().toHexString(),photo));
 
     }
     public Mono<Photo> save(Flux<DataBuffer> dataBuffer) {
         return gridFsOperations.store(dataBuffer,"FILEUPLAOD")
                 .map(objectId -> Photo.builder().dataFile(objectId).build())
-                .flatMap(photo -> mongoOperations.save(photo))
+                .flatMap(mongoOperations::save)
                 .doOnNext(photo -> kafkaTemplate.send("photos",photo.getId().toHexString(),photo));
 
     }
@@ -51,8 +52,8 @@ public class PhotoDataService {
         return mongoOperations.findOne(Query.query(Criteria.where("_id").is(id)),Photo.class)
                 .map(Photo::getDataFile)
                 .flatMap(objectId -> gridFsOperations.findOne(Query.query(Criteria.where("_id").is(objectId))))
-                .flatMap(gridFSFile -> gridFsOperations.getResource(gridFSFile))
-                .map(reactiveGridFsResource -> reactiveGridFsResource.getDownloadStream())
+                .flatMap(gridFsOperations::getResource)
+                .map(ReactiveGridFsResource::getDownloadStream)
                 .flux()
                 .flatMap(Function.identity())
                 .log()

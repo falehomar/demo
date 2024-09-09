@@ -1,9 +1,7 @@
 package my.demo.photoservice;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import my.demo.common.Photo;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,7 +16,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;
-import java.util.List;
+
 @Slf4j
 @RestController()
 public class PhotoUploadApi {
@@ -60,12 +58,6 @@ public class PhotoUploadApi {
         exchange.getResponse().getHeaders().add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=image.png");
 
         return Mono.just(new ResponseEntity<>(photoDataService.downloadPhoto(id), HttpStatus.OK));
-    }
-
-    @Data
-    @Builder(toBuilder = true)
-    public static class PhotoListResponse {
-        List<Photo> photos;
     }
 
     @GetMapping(path = "/photos")

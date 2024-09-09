@@ -16,11 +16,6 @@ public class WebSecurityConfig implements WebFluxConfigurer {
     public SecurityWebFilterChain filterChain(ServerHttpSecurity http) throws Exception {
         http.authorizeExchange(matcher -> matcher.anyExchange().permitAll());
         http.csrf(ServerHttpSecurity.CsrfSpec::disable);
-//        http.cors(corsSpec -> {
-//            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//            source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-//            corsSpec.configurationSource(source);
-//        });
         return http.build();
     }
 

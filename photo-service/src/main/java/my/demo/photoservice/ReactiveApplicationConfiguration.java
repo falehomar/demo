@@ -18,10 +18,6 @@ public class ReactiveApplicationConfiguration extends AbstractReactiveMongoConfi
         return MongoClients.create("mongodb://localhost:27017");
     }
 
-//    @Bean
-//    ReactiveMongoOperations mongoTemplate(MongoClient mongoClient) {
-//        return new ReactiveMongoTemplate(mongoClient, DATABASE_NAME);
-//    }
 
     @Bean
     public ReactiveGridFsTemplate reactiveGridFsTemplate(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory, MongoConverter mongoConverter) {
