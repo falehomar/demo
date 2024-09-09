@@ -2,21 +2,28 @@
 'https://plantuml.com/component-diagram
 
 
-package "Spring boot Angular demo" {
+package "SpringBoot demo" {
 
-  [PhotoAlbumApp] <<UIAngularApplication>>
-  [UserService] <<SpringBootMicroService>>
+  [ThumbnailGenerator] <<KafkaListener>>
+  http - [PhotoService] <<SpringBootMicroService>>
 
-}
 
-database "MongoDB" {
-  folder "collections" {
-    [Users]
+    node kafka {
+    [photos] <<KafkaTopic>>
+    }
+  database "MongoDB" {
+    folder "collections" {
+      [photo-album]
+    }
   }
+
 }
 
 
-[PhotoAlbumApp] --> [UserService]
-[UserService] --> [Users]
 
+
+[PhotoService] -left-> [photo-album]
+[PhotoService] -left-> [photos]
+[ThumbnailGenerator] --> [photos]
+[ThumbnailGenerator] --> [photo-album]
 @enduml
