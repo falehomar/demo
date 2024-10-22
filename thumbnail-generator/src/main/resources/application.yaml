@@ -9,3 +9,8 @@ spring:
           json:
             trusted:
               packages: my.demo.common
+    bootstrap-servers: "kafka:9092"
+  data:
+    mongodb:
+      uri: "mongodb://db:27017/photo-album"
+management.metrics.enabled.all: false

@@ -1,6 +1,5 @@
 package my.demo.photoservice;
 
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.codec.multipart.FilePartEvent;
 import org.springframework.http.codec.multipart.FormPartEvent;
 import org.springframework.http.codec.multipart.PartEvent;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
@@ -21,15 +21,18 @@ import java.util.Collections;
 @RestController()
 public class PhotoUploadApi {
 
-    PhotoDataService photoDataService;
-
-    public PhotoUploadApi(PhotoDataService photoDataService) {
+    private PhotoDataService photoDataService;
+    private PhotoServiceConfiguration photoServiceConfiguration;
+    public PhotoUploadApi(PhotoDataService photoDataService, PhotoServiceConfiguration photoServiceConfiguration) {
         this.photoDataService = photoDataService;
+        this.photoServiceConfiguration = photoServiceConfiguration;
     }
 
 
     @PostMapping(path = "/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Flux<PhotoUploadResponse> uploadPhoto(@RequestBody Flux<PartEvent> partEventFlux) {
+    public Flux<PhotoUploadResponse> uploadPhoto(@RequestBody Flux<PartEvent> partEventFlux, @RequestHeader(name = "Content-Type") String contentType) {
+
+        //MediaType mediaType = MediaType.parseMediaType(contentType);
 
         return partEventFlux.windowUntil(PartEvent::isLast)
                 .concatMap(p -> p.switchOnFirst(((signal, partEvents) -> {
@@ -38,8 +41,11 @@ public class PhotoUploadApi {
                         PartEvent partEvent = signal.get();
                         if (partEvent instanceof FilePartEvent filePartEvent) {
                             log.info("FilePartEvent");
+
+                            //if (photoServiceConfiguration.mimeTypes().stream().anyMatch(mimeType -> mimeType.includes(mediaType)))
                                     return photoDataService.save(partEvents.map(PartEvent::content))
                                     .map(photos -> PhotoUploadResponse.builder().photos(Collections.singletonList(photos)).build());
+                            //else return Mono.empty();
                         } else if (partEvent instanceof FormPartEvent formPartEvent) {
                             log.info("FormFieldPart {}: {}", formPartEvent.name(),formPartEvent.value());
                             return Mono.empty();

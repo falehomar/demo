@@ -1,10 +1,4 @@
 services:
-  user-service:
-    build:
-      context: .
-      target: photo-service
-    ports:
-      - 8080:8080
   db:
     image: mongo:latest
     ports:
@@ -13,3 +7,12 @@ services:
     image: apache/kafka-native:latest
     ports:
       - 9092:9092
+    hostname: kafka
+  photo-service:
+    build:
+      context: .
+      target: photo-service
+    ports:
+      - 8080:8080
+      - 52437:52437
+

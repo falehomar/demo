@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photo-service
+  labels:
+    app: photo-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photo-service
+  template:
+    metadata:
+      name: photo-service
+      labels:
+        app: photo-service
+    spec:
+      containers:
+        - name: photo-service
+          image: photo-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+
+      

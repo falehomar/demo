@@ -15,16 +15,6 @@ public class ReactiveApplicationConfiguration extends AbstractReactiveMongoConfi
     public static final String DATABASE_NAME = "photo-album";
 
     @Bean
-    MongoClient mongoClient() {
-        return MongoClients.create("mongodb://localhost:27017");
-    }
-
-//    @Bean
-//    ReactiveMongoOperations mongoTemplate(MongoClient mongoClient) {
-//        return new ReactiveMongoTemplate(mongoClient, DATABASE_NAME);
-//    }
-
-    @Bean
     public ReactiveGridFsTemplate reactiveGridFsTemplate(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory, MongoConverter mongoConverter) {
         return new ReactiveGridFsTemplate(reactiveMongoDatabaseFactory, mongoConverter);
     }

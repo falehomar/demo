@@ -4,3 +4,29 @@ management.endpoints.web.exposure.include: '*'
 springdoc.swagger-ui.path: /swagger-ui.html
 
 
+photo-service.mime-types:
+  - image/png
+management:
+  health:
+    mongo:
+      enabled: true
+  metrics:
+    enable:
+      all: false
+
+logging:
+  level:
+    root: INFO
+    org.apache.kafka.clients: DEBUG
+
+spring:
+  data:
+    mongodb:
+      uri: "mongodb://db:27017/photo-album"
+
+
+  kafka:
+    bootstrap-servers:
+      - kafka:9092
+
+

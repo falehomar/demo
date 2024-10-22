@@ -1,15 +1,15 @@
 services:
-  user-service:
+  thumbnail-generator:
     build:
       context: .
-      target: photo-service
+      target: thumbnail-generator
     ports:
-      - 8080:8080
+      - "8080:8080"
   db:
     image: mongo:latest
     ports:
-      - 27017:27017
+      - "27017:27017"
   kafka:
     image: apache/kafka-native:latest
     ports:
-      - 9092:9092
+      - "9092:9092"

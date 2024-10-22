@@ -1,0 +1,7 @@
+<mat-toolbar>
+  <button mat-button routerLink="photo-upload">Upload image</button>
+</mat-toolbar>
+<router-outlet />
+<div class="icons">
+  <app-thumbnail *ngFor="let thumbnail of thumbnails; trackBy:id" [photo]="thumbnail"/>
+</div>
